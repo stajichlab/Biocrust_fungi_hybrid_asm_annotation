@@ -1,0 +1,221 @@
+-- canu 2.2
+--
+-- CITATIONS
+--
+-- For 'standard' assemblies of PacBio or Nanopore reads:
+--   Koren S, Walenz BP, Berlin K, Miller JR, Phillippy AM.
+--   Canu: scalable and accurate long-read assembly via adaptive k-mer weighting and repeat separation.
+--   Genome Res. 2017 May;27(5):722-736.
+--   http://doi.org/10.1101/gr.215087.116
+-- 
+-- Read and contig alignments during correction and consensus use:
+--   Šošic M, Šikic M.
+--   Edlib: a C/C ++ library for fast, exact sequence alignment using edit distance.
+--   Bioinformatics. 2017 May 1;33(9):1394-1395.
+--   http://doi.org/10.1093/bioinformatics/btw753
+-- 
+-- Overlaps are generated using:
+--   Berlin K, et al.
+--   Assembling large genomes with single-molecule sequencing and locality-sensitive hashing.
+--   Nat Biotechnol. 2015 Jun;33(6):623-30.
+--   http://doi.org/10.1038/nbt.3238
+-- 
+--   Myers EW, et al.
+--   A Whole-Genome Assembly of Drosophila.
+--   Science. 2000 Mar 24;287(5461):2196-204.
+--   http://doi.org/10.1126/science.287.5461.2196
+-- 
+-- Corrected read consensus sequences are generated using an algorithm derived from FALCON-sense:
+--   Chin CS, et al.
+--   Phased diploid genome assembly with single-molecule real-time sequencing.
+--   Nat Methods. 2016 Dec;13(12):1050-1054.
+--   http://doi.org/10.1038/nmeth.4035
+-- 
+-- Contig consensus sequences are generated using an algorithm derived from pbdagcon:
+--   Chin CS, et al.
+--   Nonhybrid, finished microbial genome assemblies from long-read SMRT sequencing data.
+--   Nat Methods. 2013 Jun;10(6):563-9
+--   http://doi.org/10.1038/nmeth.2474
+-- 
+-- CONFIGURE CANU
+--
+-- Detected Java(TM) Runtime Environment '17.0.2' (from '/opt/linux/rocky/8.x/x86_64/pkgs/java/17.0.2/bin/java') without -d64 support.
+-- Detected gnuplot version '5.2 patchlevel 4   ' (from 'gnuplot') and image format 'png'.
+--
+-- Detected 2 CPUs and 4096 gigabytes of memory on the local machine.
+--
+-- Detected Slurm with 'sinfo' binary in /opt/linux/rocky/8.x/x86_64/pkgs/slurm/23.02.2/bin/sinfo.
+-- Detected Slurm with task IDs up to 2499 allowed.
+-- 
+-- Slurm support detected.  Resources available:
+--     10 hosts with 256 cores and  438 GB memory.
+--     11 hosts with  64 cores and  194 GB memory.
+--      4 hosts with  32 cores and  900 GB memory.
+--      4 hosts with  96 cores and  341 GB memory.
+--      2 hosts with  64 cores and  927 GB memory.
+--      2 hosts with 256 cores and  900 GB memory.
+--      2 hosts with  64 cores and   97 GB memory.
+--     53 hosts with  64 cores and  438 GB memory.
+--      8 hosts with 128 cores and  438 GB memory.
+--      2 hosts with  32 cores and  111 GB memory.
+--     31 hosts with  64 cores and  487 GB memory.
+--     18 hosts with 256 cores and  927 GB memory.
+--      2 hosts with  96 cores and  438 GB memory.
+--      3 hosts with  64 cores and  900 GB memory.
+--      2 hosts with  48 cores and  487 GB memory.
+--
+-- I appear to be task 5 in a job array, unsetting SLURM_ARRAY_TASK_ID.
+--
+--                         (tag)Threads
+--                (tag)Memory         |
+--        (tag)             |         |  algorithm
+--        -------  ----------  --------  -----------------------------
+-- Grid:  meryl      6.000 GB    4 CPUs  (k-mer counting)
+-- Grid:  hap        6.000 GB    4 CPUs  (read-to-haplotype assignment)
+-- Grid:  cormhap    6.000 GB   16 CPUs  (overlap detection with mhap)
+-- Grid:  obtovl     4.000 GB    8 CPUs  (overlap detection)
+-- Grid:  utgovl     4.000 GB    8 CPUs  (overlap detection)
+-- Grid:  cor        -.--- GB    4 CPUs  (read correction)
+-- Grid:  ovb        4.000 GB    1 CPU   (overlap store bucketizer)
+-- Grid:  ovs        8.000 GB    1 CPU   (overlap store sorting)
+-- Grid:  red        8.000 GB    4 CPUs  (read error detection)
+-- Grid:  oea        8.000 GB    1 CPU   (overlap error adjustment)
+-- Grid:  bat       16.000 GB    4 CPUs  (contig construction with bogart)
+-- Grid:  cns        -.--- GB    4 CPUs  (consensus)
+--
+-- Found untrimmed raw Nanopore reads in the input files.
+--
+-- I appear to be task  in a job array, unsetting SLURM_ARRAY_TASK_ID.
+--
+-- Generating assembly 'VB16' in '/bigdata/stajichlab/shared/projects/BioCrusts/MossCrust/genomics/hybrid_assemblies/asm/canu/VB16':
+--   genomeSize:
+--     20000000
+--
+--   Overlap Generation Limits:
+--     corOvlErrorRate 0.3200 ( 32.00%)
+--     obtOvlErrorRate 0.1200 ( 12.00%)
+--     utgOvlErrorRate 0.1200 ( 12.00%)
+--
+--   Overlap Processing Limits:
+--     corErrorRate    0.3000 ( 30.00%)
+--     obtErrorRate    0.1200 ( 12.00%)
+--     utgErrorRate    0.1200 ( 12.00%)
+--     cnsErrorRate    0.2000 ( 20.00%)
+--
+--   Stages to run:
+--     correct raw reads.
+--     trim corrected reads.
+--     assemble corrected and trimmed reads.
+--
+--
+-- BEGIN CORRECTION
+----------------------------------------
+-- Starting command on Wed Jul 24 09:40:06 2024 with 92993.609 GB free disk space
+
+    cd .
+    ./VB16.seqStore.sh \
+    > ./VB16.seqStore.err 2>&1
+
+-- Finished on Wed Jul 24 09:40:23 2024 (17 seconds) with 92992.656 GB free disk space
+----------------------------------------
+--
+-- In sequence store './VB16.seqStore':
+--   Found 55428 reads.
+--   Found 648023989 bases (32.4 times coverage).
+--    Histogram of raw reads:
+--    
+--    G=648023989                        sum of  ||               length     num
+--    NG         length     index       lengths  ||                range    seqs
+--    ----- ------------ --------- ------------  ||  ------------------- -------
+--    00010        45515      1156     64837723  ||       1000-3835        13346|---------------------------------------------------------------
+--    00020        35721      2775    129621658  ||       3836-6671        11023|-----------------------------------------------------
+--    00030        29004      4796    194409201  ||       6672-9507         7834|-------------------------------------
+--    00040        23501      7286    259227682  ||       9508-12343        5374|--------------------------
+--    00050        18894     10360    324016174  ||      12344-15179        3895|-------------------
+--    00060        14956     14221    388828518  ||      15180-18015        2892|--------------
+--    00070        11621     19143    453622984  ||      18016-20851        2139|-----------
+--    00080         8523     25647    518420947  ||      20852-23687        1741|---------
+--    00090         5552     34986    583225190  ||      23688-26523        1392|-------
+--    00100         1000     55427    648023989  ||      26524-29359        1138|------
+--    001.000x               55428    648023989  ||      29360-32195         953|-----
+--                                               ||      32196-35031         748|----
+--                                               ||      35032-37867         625|---
+--                                               ||      37868-40703         520|---
+--                                               ||      40704-43539         428|---
+--                                               ||      43540-46375         329|--
+--                                               ||      46376-49211         261|--
+--                                               ||      49212-52047         200|-
+--                                               ||      52048-54883         142|-
+--                                               ||      54884-57719         124|-
+--                                               ||      57720-60555          64|-
+--                                               ||      60556-63391          58|-
+--                                               ||      63392-66227          49|-
+--                                               ||      66228-69063          37|-
+--                                               ||      69064-71899          24|-
+--                                               ||      71900-74735          17|-
+--                                               ||      74736-77571          16|-
+--                                               ||      77572-80407           8|-
+--                                               ||      80408-83243           9|-
+--                                               ||      83244-86079          12|-
+--                                               ||      86080-88915           3|-
+--                                               ||      88916-91751           3|-
+--                                               ||      91752-94587           2|-
+--                                               ||      94588-97423           1|-
+--                                               ||      97424-100259          0|
+--                                               ||     100260-103095          2|-
+--                                               ||     103096-105931          1|-
+--                                               ||     105932-108767          2|-
+--                                               ||     108768-111603          4|-
+--                                               ||     111604-114439          2|-
+--                                               ||     114440-117275          1|-
+--                                               ||     117276-120111          1|-
+--                                               ||     120112-122947          1|-
+--                                               ||     122948-125783          2|-
+--                                               ||     125784-128619          1|-
+--                                               ||     128620-131455          1|-
+--                                               ||     131456-134291          0|
+--                                               ||     134292-137127          2|-
+--                                               ||     137128-139963          0|
+--                                               ||     139964-142799          1|-
+--    
+----------------------------------------
+-- Starting command on Wed Jul 24 09:40:24 2024 with 92992.656 GB free disk space
+
+    cd correction/0-mercounts
+    ./meryl-configure.sh \
+    > ./meryl-configure.err 2>&1
+
+-- Finished on Wed Jul 24 09:40:24 2024 (lickety-split) with 92992.656 GB free disk space
+----------------------------------------
+--  segments   memory batches
+--  -------- -------- -------
+--        01  1.47 GB       2
+--        02  0.84 GB       2
+--        04  0.42 GB       2
+--        06  0.28 GB       2
+--
+--  For 55428 reads with 648023989 bases, limit to 6 batches.
+--  Will count kmers using 01 jobs, each using 3 GB and 4 threads.
+--
+-- Finished stage 'merylConfigure', reset canuIteration.
+--
+-- Running jobs.  First attempt out of 2.
+--
+-- 'meryl-count.jobSubmit-01.sh' -> job 5145841 task 1.
+--
+----------------------------------------
+-- Starting command on Wed Jul 24 09:40:24 2024 with 92992.656 GB free disk space
+
+    cd /bigdata/stajichlab/shared/projects/BioCrusts/MossCrust/genomics/hybrid_assemblies/asm/canu/VB16
+    sbatch \
+      --depend=afterany:5145841 \
+      --cpus-per-task=1 \
+      --mem-per-cpu=4g \
+      --time 24:00:00  \
+      -D `pwd` \
+      -J 'canu_VB16' \
+      -o canu-scripts/canu.01.out  canu-scripts/canu.01.sh
+Submitted batch job 5145842
+
+-- Finished on Wed Jul 24 09:40:24 2024 (fast as lightning) with 92992.656 GB free disk space
+----------------------------------------
