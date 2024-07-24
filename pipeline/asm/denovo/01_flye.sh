@@ -23,7 +23,7 @@ mkdir -p $OUT
 IFS=,
 SAMPLES=samples.csv
 
-tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ
+tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ SIZE
 do
     if [[ ! -f $OUT/$BASE/assembly.fasta || $IN/$NANOPORE -nt $OUT/$BASE/assembly.fasta ]]; then
     	flye --nano-hq $IN/$NANOPORE --out-dir $OUT/$BASE --threads $CPU --scaffold

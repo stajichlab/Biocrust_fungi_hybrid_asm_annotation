@@ -16,7 +16,7 @@ mkdir -p $OUT
 IFS=,
 SAMPLES=samples.csv
 
-tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ
+tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ SIZE
 do
-    canu -p ${BASE} -d $OUT/${BASE} genomeSize=36m -raw -nanopore $IN/$NANOPORE gridOptions="--time 24:00:00"
+    canu -p ${BASE} -d $OUT/${BASE} genomeSize=$SIZE -raw -nanopore $IN/$NANOPORE gridOptions="--time 24:00:00"
 done
