@@ -1,2 +1,7 @@
-NAME,SPECIES,STRAIN,NANOPORE,ILLUMINA,SUBPHYLUM,PHYLUM,LOCUS,RNASEQ
-Aspergillus_tubingensis_DFA,Aspergillus tubingensis,DFA,4632_Nanopore.fastq.gz,4632,Pezizomycotina,Ascomycota,ABZX51,A_tubingensis
+NAME,SPECIES,STRAIN,NANOPORE,ILLUMINA,SUBPHYLUM,PHYLUM,LOCUS,RNASEQ,SIZE
+KHK86,Rhodotorula_sp,NA,NA,5087_1,Pucciniomycotina,Basidiomycota,NA,NA,21m
+PH1,Exophiala_crusticola,NA,5087_2.fastq.gz,5087_2,Pezizomycotina,Ascomycota,NA,NA,30m
+VB21,Rhodotorula_sp,NA,5087_3.fastq.gz,5087_3,Pucciniomycotina,Basidiomycota,NA,NA,21m
+KHK93,Naganishia_randhawae,NA,5087_4.fastq.gz,5087_4,Agaricomycotina,Basidiomycota,NA,NA,20m
+VB16,Naganishia_globosa,NA,5087_5.fastq.gz,5087_5,Agaricomycotina,Basidiomycota,NA,NA,20m
+JDC5,Coniochaeta_sp,NA,5087_6.fastq.gz,5087_6,Pezizomycotina,Ascomycota,NA,NA,32m
