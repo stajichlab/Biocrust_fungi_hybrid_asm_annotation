@@ -1,8 +1,0 @@
- Kmer hits without olaps = 757638
-    Kmer hits with olaps = 546600
-  Multiple overlaps/pair = 0
- Total overlaps produced = 546600
-      Contained overlaps = 272672
-       Dovetail overlaps = 273928
-Rejected by short window = 0
- Rejected by long window = 0

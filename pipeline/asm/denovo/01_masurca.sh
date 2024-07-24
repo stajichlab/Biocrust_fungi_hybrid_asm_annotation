@@ -24,7 +24,7 @@ mkdir -p $OUT
 IFS=,
 SAMPLES=samples.csv
 
-tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ
+tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ SIZE
 do
     if [ -z "$ILLUMINA" ]; then
 	echo "cannot run masurca hybrid assembly without Illumina for $BASE"

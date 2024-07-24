@@ -1,0 +1,40 @@
+gzip: illumina_old/coniochaeta_sp_jdc7_R1.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/coniochaeta_sp_jdc7_R2.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/exophiala_crusticola_khk47_R1.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/exophiala_crusticola_khk47_R2.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/rhodotorula_sp_vb21_R1.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/rhodotorula_sp_vb21_R2.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_1_S70_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_1_S70_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_2_S71_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_2_S71_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_3_S72_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_3_S72_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_4_S73_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_4_S73_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_5_S74_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_5_S74_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_6_S75_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_6_S75_R2_001.fastq.gz: Too many levels of symbolic links
+/var/spool/slurmd/job5150355/slurm_script: line 12: illumina/5087_2_S71_R1_001.fastq.gz: Permission denied
+/var/spool/slurmd/job5150355/slurm_script: line 14: illumina/5087_2_S71_R2_001.fastq.gz: Permission denied
+/var/spool/slurmd/job5150355/slurm_script: line 19: illumina/5087_3_S72_R1_001.fastq.gz: Permission denied
+/var/spool/slurmd/job5150355/slurm_script: line 21: illumina/5087_3_S72_R2_001.fastq.gz: Permission denied
+gzip: illumina/5087_1_S70_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_1_S70_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_2_S71_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_2_S71_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_3_S72_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_3_S72_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_4_S73_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_4_S73_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_5_S74_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_5_S74_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_6_S75_R1_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina/5087_6_S75_R2_001.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/coniochaeta_sp_jdc7_R1.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/coniochaeta_sp_jdc7_R2.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/exophiala_crusticola_khk47_R1.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/exophiala_crusticola_khk47_R2.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/rhodotorula_sp_vb21_R1.fastq.gz: Too many levels of symbolic links
+gzip: illumina_old/rhodotorula_sp_vb21_R2.fastq.gz: Too many levels of symbolic links
