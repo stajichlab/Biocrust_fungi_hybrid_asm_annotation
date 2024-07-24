@@ -1,2 +1,0 @@
-Aspergillus_tubingensis_DFA.sorted is Aspergillus_tubingensis_DFA.flye.polca.fasta
-
