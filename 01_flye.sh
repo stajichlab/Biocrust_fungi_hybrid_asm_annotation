@@ -18,14 +18,14 @@ if [ -z $N ]; then
     fi
 fi
 
-
+# modified so that it resumes run only for the aborted Naganishia
 mkdir -p $OUT
 IFS=,
-SAMPLES=samples.csv
+SAMPLES=samples2.csv
 tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ SIZE
 do
     if [[ ! -d $OUT/$BASE || ! -f $OUT/$BASE/assembly.fasta || $IN/$NANOPORE -nt $OUT/$BASE/assembly.fasta ]]; then
-        flye --nano-hq $IN/$NANOPORE --out-dir $OUT/$BASE --threads $CPU --scaffold
+        flye --nano-hq $IN/$NANOPORE --out-dir $OUT/$BASE --threads $CPU --scaffold --resume
     else
         echo "Error: $OUT/$BASE already exists"
     fi

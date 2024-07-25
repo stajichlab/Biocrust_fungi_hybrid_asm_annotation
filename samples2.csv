@@ -1,0 +1,3 @@
+NAME,SPECIES,STRAIN,NANOPORE,ILLUMINA,SUBPHYLUM,PHYLUM,LOCUS,RNASEQ,SIZE
+KHK93,Naganishia_randhawae,NA,5087_4.fastq.gz,5087_4_S73,Agaricomycotina,Basidiomycota,NA,NA,20m
+PH1,Exophiala_crusticola,NA,5087_2.fastq.gz,5087_2_S71,Pezizomycotina,Ascomycota,NA,NA,57m

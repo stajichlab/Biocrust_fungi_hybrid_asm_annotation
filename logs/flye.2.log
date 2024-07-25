@@ -1,4 +1,1 @@
 x01
-[2024-07-25 10:53:34] INFO: Starting Flye 2.9-b1774
-[2024-07-25 10:53:34] ERROR: Can't open /bigdata/stajichlab/shared/projects/BioCrusts/MossCrust/genomics/hybrid_assemblies/input/nanopore/NA
-[2024-07-25 10:53:34] ERROR: Pipeline aborted
