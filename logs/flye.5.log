@@ -1,65 +1,16 @@
 x02
-[2024-07-24 09:40:23] INFO: Starting Flye 2.9-b1774
-[2024-07-24 09:40:23] INFO: >>>STAGE: configure
-[2024-07-24 09:40:23] INFO: Configuring run
-[2024-07-24 09:40:33] INFO: Total read length: 652561480
-[2024-07-24 09:40:33] INFO: Reads N50/N90: 18731 / 5359
-[2024-07-24 09:40:33] INFO: Minimum overlap set to 5000
-[2024-07-24 09:40:33] INFO: >>>STAGE: assembly
-[2024-07-24 09:40:33] INFO: Assembling disjointigs
-[2024-07-24 09:40:33] INFO: Reading sequences
-[2024-07-24 09:40:42] INFO: Building minimizer index
-[2024-07-24 09:40:42] INFO: Pre-calculating index storage
+[2024-07-25 10:53:34] INFO: Starting Flye 2.9-b1774
+[2024-07-25 10:53:34] INFO: >>>STAGE: configure
+[2024-07-25 10:53:34] INFO: Configuring run
+[2024-07-25 10:54:41] INFO: Total read length: 4211604986
+[2024-07-25 10:54:41] INFO: Reads N50/N90: 19372 / 5669
+[2024-07-25 10:54:41] INFO: Minimum overlap set to 6000
+[2024-07-25 10:54:41] INFO: >>>STAGE: assembly
+[2024-07-25 10:54:41] INFO: Assembling disjointigs
+[2024-07-25 10:54:41] INFO: Reading sequences
+[2024-07-25 10:55:38] INFO: Building minimizer index
+[2024-07-25 10:55:38] INFO: Pre-calculating index storage
 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2024-07-24 09:40:47] INFO: Filling index
+[2024-07-25 10:56:06] INFO: Filling index
 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2024-07-24 09:41:05] INFO: Extending reads
-[2024-07-24 09:43:17] INFO: Overlap-based coverage: 76
-[2024-07-24 09:43:17] INFO: Median overlap divergence: 0.0231644
-0% 90% 100% 
-[2024-07-24 09:47:02] INFO: Assembled 1 disjointigs
-[2024-07-24 09:47:02] INFO: Generating sequence
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2024-07-24 09:47:04] INFO: Filtering contained disjointigs
-0% 100% 
-[2024-07-24 09:47:06] INFO: Contained seqs: 0
-[2024-07-24 09:47:06] INFO: >>>STAGE: consensus
-[2024-07-24 09:47:06] INFO: Running Minimap2
-[2024-07-24 09:47:44] INFO: Computing consensus
-[2024-07-24 09:49:16] INFO: Alignment error rate: 0.032581
-[2024-07-24 09:49:16] INFO: >>>STAGE: repeat
-[2024-07-24 09:49:16] INFO: Building and resolving repeat graph
-[2024-07-24 09:49:16] INFO: Parsing disjointigs
-[2024-07-24 09:49:16] INFO: Building repeat graph
-0% 100% 
-[2024-07-24 09:49:20] INFO: Median overlap divergence: 0.00475964
-[2024-07-24 09:49:20] INFO: Parsing reads
-[2024-07-24 09:49:29] INFO: Aligning reads to the graph
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2024-07-24 09:49:44] INFO: Aligned read sequence: 575980738 / 594616354 (0.968659)
-[2024-07-24 09:49:44] INFO: Median overlap divergence: 0.00972623
-[2024-07-24 09:49:44] INFO: Mean edge coverage: 85
-[2024-07-24 09:49:44] INFO: Simplifying the graph
-[2024-07-24 09:49:45] INFO: >>>STAGE: contigger
-[2024-07-24 09:49:45] INFO: Generating contigs
-[2024-07-24 09:49:45] INFO: Reading sequences
-[2024-07-24 09:49:54] INFO: Generated 1 contigs
-[2024-07-24 09:49:54] INFO: Added 0 scaffold connections
-[2024-07-24 09:49:54] INFO: >>>STAGE: polishing
-[2024-07-24 09:49:54] INFO: Polishing genome (1/1)
-[2024-07-24 09:49:54] INFO: Running minimap2
-[2024-07-24 09:50:27] INFO: Separating alignment into bubbles
-[2024-07-24 09:52:29] INFO: Alignment error rate: 0.018419
-[2024-07-24 09:52:29] INFO: Correcting bubbles
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2024-07-24 09:52:57] INFO: >>>STAGE: finalize
-[2024-07-24 09:52:57] INFO: Assembly statistics:
-
-	Total length:	6736181
-	Fragments:	1
-	Fragments N50:	6736181
-	Largest frg:	6736181
-	Scaffolds:	0
-	Mean coverage:	93
-
-[2024-07-24 09:52:57] INFO: Final assembly: /bigdata/stajichlab/shared/projects/BioCrusts/MossCrust/genomics/hybrid_assemblies/asm/flye/VB16/assembly.fasta
+[2024-07-25 10:58:06] INFO: Extending reads

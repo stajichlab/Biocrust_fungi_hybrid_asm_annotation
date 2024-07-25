@@ -26,5 +26,8 @@ tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILL
 do
     if [[ ! -d $OUT/$BASE || ! -f $OUT/$BASE/assembly.fasta || $IN/$NANOPORE -nt $OUT/$BASE/assembly.fasta ]]; then
         flye --nano-hq $IN/$NANOPORE --out-dir $OUT/$BASE --threads $CPU --scaffold
+    else
+        echo "Error: $OUT/$BASE already exists"
     fi
 done
+

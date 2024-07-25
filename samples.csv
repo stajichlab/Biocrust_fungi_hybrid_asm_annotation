@@ -1,7 +1,7 @@
 NAME,SPECIES,STRAIN,NANOPORE,ILLUMINA,SUBPHYLUM,PHYLUM,LOCUS,RNASEQ,SIZE
-KHK86,Rhodotorula_sp,NA,NA,5087_1,Pucciniomycotina,Basidiomycota,NA,NA,21m
-PH1,Exophiala_crusticola,NA,5087_2.fastq.gz,5087_2,Pezizomycotina,Ascomycota,NA,NA,30m
-VB21,Rhodotorula_sp,NA,5087_3.fastq.gz,5087_3,Pucciniomycotina,Basidiomycota,NA,NA,21m
-KHK93,Naganishia_randhawae,NA,5087_4.fastq.gz,5087_4,Agaricomycotina,Basidiomycota,NA,NA,20m
-VB16,Naganishia_globosa,NA,5087_5.fastq.gz,5087_5,Agaricomycotina,Basidiomycota,NA,NA,20m
-JDC5,Coniochaeta_sp,NA,5087_6.fastq.gz,5087_6,Pezizomycotina,Ascomycota,NA,NA,32m
+JDC5,Coniochaeta_sp,NA,5087_6.fastq.gz,5087_6_S75,Pezizomycotina,Ascomycota,NA,NA,32m
+KHK86,Rhodotorula_sp,NA,NA,5087_1_S70,Pucciniomycotina,Basidiomycota,NA,NA,21m
+PH1,Exophiala_crusticola,NA,5087_2.fastq.gz,5087_2_S71,Pezizomycotina,Ascomycota,NA,NA,30m
+VB21,Rhodotorula_sp,NA,5087_3.fastq.gz,5087_3_S72,Pucciniomycotina,Basidiomycota,NA,NA,21m
+KHK93,Naganishia_randhawae,NA,5087_4.fastq.gz,5087_4_S73,Agaricomycotina,Basidiomycota,NA,NA,20m
+VB16,Naganishia_globosa,NA,5087_5.fastq.gz,5087_5_S74,Agaricomycotina,Basidiomycota,NA,NA,20m

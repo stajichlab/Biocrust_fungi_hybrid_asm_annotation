@@ -1,0 +1,5 @@
+x01
+[2024-07-25 09:24:31] INFO: Starting Flye 2.9-b1774
+[2024-07-25 09:24:31] INFO: >>>STAGE: configure
+[2024-07-25 09:24:31] INFO: Configuring run
+slurmstepd-x01: error: *** JOB 5165533 ON x01 CANCELLED AT 2024-07-25T09:30:52 ***

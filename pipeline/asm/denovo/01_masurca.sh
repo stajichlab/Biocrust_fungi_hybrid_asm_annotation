@@ -18,8 +18,6 @@ if [ -z $N ]; then
         exit
     fi
 fi
-
-
 mkdir -p $OUT
 IFS=,
 SAMPLES=samples.csv
@@ -27,8 +25,12 @@ SAMPLES=samples.csv
 tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ SIZE
 do
     if [ -z "$ILLUMINA" ]; then
-	echo "cannot run masurca hybrid assembly without Illumina for $BASE"
-    	exit
+        echo "cannot run masurca hybrid assembly without Illumina for $BASE"
+        exit
+    fi
+    if [ -d ${OUT}/${BASE} ]; then
+        echo "skipping sample $BASE, output directory already exists"
+        continue
     fi
     INONT=$(realpath $IN/$NANOPORE)
     INFASTQ=$(realpath $IN1/$ILLUMINA)
@@ -37,18 +39,19 @@ do
 
     mkdir -p $OUT/${BASE}
     if [ ! -f ${OUT}/${BASE}/config.txt ]; then
-	    masurca -g ${OUT}/${BASE}/config.txt
-	    perl -i -p -e 's/FLYE_ASSEMBLY=1/FLYE_ASSEMBLY=0/; s/LHE_COVERAGE=25/LHE_COVERAGE=35/;' ${OUT}/${BASE}/config.txt
-	    perl -i -p -e "s!^\#NANOPORE.+!NANOPORE=$INONT!" ${OUT}/${BASE}/config.txt
-	    perl -i -p -e "s!^PE=.+!PE= pe 500 50 $LEFT $RIGHT!" ${OUT}/${BASE}/config.txt
+        masurca -g ${OUT}/${BASE}/config.txt
+        perl -i -p -e 's/FLYE_ASSEMBLY=1/FLYE_ASSEMBLY=0/; s/LHE_COVERAGE=25/LHE_COVERAGE=35/;' ${OUT}/${BASE}/config.txt
+        perl -i -p -e "s!^\#NANOPORE.+!NANOPORE=$INONT!" ${OUT}/${BASE}/config.txt
+        perl -i -p -e "s!^PE=.+!PE= pe 500 50 $LEFT $RIGHT!" ${OUT}/${BASE}/config.txt
     fi
     OUTSCAFFOLDS=$(realpath $OUT)/$BASE/CA.mr.49.17.15.0.02/primary.genome.scf.fasta
     OUTALT=$(realpath $OUT)/$BASE/CA.mr.49.17.15.0.02/alternative.genome.scf.fasta
 
     if [[ ! -f $OUTSCAFFOLDS || $INONT -nt $OUTSCAFFOLDS ]]; then
-    	pushd $OUT/$BASE
-	masurca config.txt
-	bash assemble.sh
-	popd
+        pushd $OUT/$BASE
+        masurca config.txt
+        bash assemble.sh
+        popd
     fi
+done
 done

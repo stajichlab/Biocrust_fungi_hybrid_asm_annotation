@@ -1,230 +1,79 @@
--- canu 2.2
---
--- CITATIONS
---
--- For 'standard' assemblies of PacBio or Nanopore reads:
---   Koren S, Walenz BP, Berlin K, Miller JR, Phillippy AM.
---   Canu: scalable and accurate long-read assembly via adaptive k-mer weighting and repeat separation.
---   Genome Res. 2017 May;27(5):722-736.
---   http://doi.org/10.1101/gr.215087.116
--- 
--- Read and contig alignments during correction and consensus use:
---   Šošic M, Šikic M.
---   Edlib: a C/C ++ library for fast, exact sequence alignment using edit distance.
---   Bioinformatics. 2017 May 1;33(9):1394-1395.
---   http://doi.org/10.1093/bioinformatics/btw753
--- 
--- Overlaps are generated using:
---   Berlin K, et al.
---   Assembling large genomes with single-molecule sequencing and locality-sensitive hashing.
---   Nat Biotechnol. 2015 Jun;33(6):623-30.
---   http://doi.org/10.1038/nbt.3238
--- 
---   Myers EW, et al.
---   A Whole-Genome Assembly of Drosophila.
---   Science. 2000 Mar 24;287(5461):2196-204.
---   http://doi.org/10.1126/science.287.5461.2196
--- 
--- Corrected read consensus sequences are generated using an algorithm derived from FALCON-sense:
---   Chin CS, et al.
---   Phased diploid genome assembly with single-molecule real-time sequencing.
---   Nat Methods. 2016 Dec;13(12):1050-1054.
---   http://doi.org/10.1038/nmeth.4035
--- 
--- Contig consensus sequences are generated using an algorithm derived from pbdagcon:
---   Chin CS, et al.
---   Nonhybrid, finished microbial genome assemblies from long-read SMRT sequencing data.
---   Nat Methods. 2013 Jun;10(6):563-9
---   http://doi.org/10.1038/nmeth.2474
--- 
--- CONFIGURE CANU
---
--- Detected Java(TM) Runtime Environment '17.0.2' (from '/opt/linux/rocky/8.x/x86_64/pkgs/java/17.0.2/bin/java') without -d64 support.
--- Detected gnuplot version '5.2 patchlevel 4   ' (from 'gnuplot') and image format 'png'.
---
--- Detected 2 CPUs and 4096 gigabytes of memory on the local machine.
---
--- Detected Slurm with 'sinfo' binary in /opt/linux/rocky/8.x/x86_64/pkgs/slurm/23.02.2/bin/sinfo.
--- Detected Slurm with task IDs up to 2499 allowed.
--- 
--- Slurm support detected.  Resources available:
---      4 hosts with  96 cores and  341 GB memory.
---      2 hosts with 256 cores and  900 GB memory.
---      2 hosts with  64 cores and  927 GB memory.
---      8 hosts with 128 cores and  438 GB memory.
---      2 hosts with  64 cores and   97 GB memory.
---     10 hosts with 256 cores and  438 GB memory.
---     11 hosts with  64 cores and  194 GB memory.
---     53 hosts with  64 cores and  438 GB memory.
---     18 hosts with 256 cores and  927 GB memory.
---      2 hosts with  96 cores and  438 GB memory.
---      2 hosts with  32 cores and  111 GB memory.
---      3 hosts with  64 cores and  900 GB memory.
---      4 hosts with  32 cores and  900 GB memory.
---      2 hosts with  48 cores and  487 GB memory.
---     31 hosts with  64 cores and  487 GB memory.
---
--- I appear to be task 2 in a job array, unsetting SLURM_ARRAY_TASK_ID.
---
---                         (tag)Threads
---                (tag)Memory         |
---        (tag)             |         |  algorithm
---        -------  ----------  --------  -----------------------------
--- Grid:  meryl      6.000 GB    4 CPUs  (k-mer counting)
--- Grid:  hap        6.000 GB    4 CPUs  (read-to-haplotype assignment)
--- Grid:  cormhap    6.000 GB   16 CPUs  (overlap detection with mhap)
--- Grid:  obtovl     4.000 GB    8 CPUs  (overlap detection)
--- Grid:  utgovl     4.000 GB    8 CPUs  (overlap detection)
--- Grid:  cor        -.--- GB    4 CPUs  (read correction)
--- Grid:  ovb        4.000 GB    1 CPU   (overlap store bucketizer)
--- Grid:  ovs        8.000 GB    1 CPU   (overlap store sorting)
--- Grid:  red        8.000 GB    4 CPUs  (read error detection)
--- Grid:  oea        8.000 GB    1 CPU   (overlap error adjustment)
--- Grid:  bat       16.000 GB    4 CPUs  (contig construction with bogart)
--- Grid:  cns        -.--- GB    4 CPUs  (consensus)
---
--- Found untrimmed raw Nanopore reads in the input files.
---
--- I appear to be task  in a job array, unsetting SLURM_ARRAY_TASK_ID.
---
--- Generating assembly 'PH1' in '/bigdata/stajichlab/shared/projects/BioCrusts/MossCrust/genomics/hybrid_assemblies/asm/canu/PH1':
---   genomeSize:
---     30000000
---
---   Overlap Generation Limits:
---     corOvlErrorRate 0.3200 ( 32.00%)
---     obtOvlErrorRate 0.1200 ( 12.00%)
---     utgOvlErrorRate 0.1200 ( 12.00%)
---
---   Overlap Processing Limits:
---     corErrorRate    0.3000 ( 30.00%)
---     obtErrorRate    0.1200 ( 12.00%)
---     utgErrorRate    0.1200 ( 12.00%)
---     cnsErrorRate    0.2000 ( 20.00%)
---
---   Stages to run:
---     correct raw reads.
---     trim corrected reads.
---     assemble corrected and trimmed reads.
---
---
--- BEGIN CORRECTION
-----------------------------------------
--- Starting command on Wed Jul 24 09:40:05 2024 with 92993.609 GB free disk space
 
-    cd .
-    ./PH1.seqStore.sh \
-    > ./PH1.seqStore.err 2>&1
+usage:   canu [-version] [-citation] \
+              [-haplotype | -correct | -trim | -assemble | -trim-assemble] \
+              [-s <assembly-specifications-file>] \
+               -p <assembly-prefix> \
+               -d <assembly-directory> \
+               genomeSize=<number>[g|m|k] \
+              [other-options] \
+              [-haplotype{NAME} illumina.fastq.gz] \
+              [-corrected] \
+              [-trimmed] \
+              [-pacbio |
+               -nanopore |
+               -pacbio-hifi] file1 file2 ...
 
--- Finished on Wed Jul 24 09:47:34 2024 (449 seconds) with 92974.968 GB free disk space
-----------------------------------------
---
--- In sequence store './PH1.seqStore':
---   Found 1568313 reads.
---   Found 6000000238 bases (200 times coverage).
---    Histogram of raw reads:
---    
---    G=6000000238                       sum of  ||               length     num
---    NG         length     index       lengths  ||                range    seqs
---    ----- ------------ --------- ------------  ||  ------------------- -------
---    00010        16499     28010    600003354  ||       1000-3646      1055439|---------------------------------------------------------------
---    00020        11939     71181   1200006122  ||       3647-6293       274774|-----------------
---    00030         9017    129310   1800004080  ||       6294-8940       106702|-------
---    00040         6908    205621   2400004874  ||       8941-11587       54960|----
---    00050         5335    304835   3000002807  ||      11588-14234       31507|--
---    00060         4154    432665   3600003104  ||      14235-16881       19115|--
---    00070         3225    596879   4200002496  ||      16882-19528       11009|-
---    00080         2429    810993   4800001237  ||      19529-22175        6545|-
---    00090         1676   1107171   5400000895  ||      22176-24822        3543|-
---    00100         1000   1568312   6000000238  ||      24823-27469        1885|-
---    001.000x             1568313   6000000238  ||      27470-30116        1099|-
---                                               ||      30117-32763         596|-
---                                               ||      32764-35410         352|-
---                                               ||      35411-38057         246|-
---                                               ||      38058-40704         141|-
---                                               ||      40705-43351         105|-
---                                               ||      43352-45998          74|-
---                                               ||      45999-48645          60|-
---                                               ||      48646-51292          35|-
---                                               ||      51293-53939          27|-
---                                               ||      53940-56586          18|-
---                                               ||      56587-59233          20|-
---                                               ||      59234-61880          13|-
---                                               ||      61881-64527          11|-
---                                               ||      64528-67174           7|-
---                                               ||      67175-69821          10|-
---                                               ||      69822-72468           3|-
---                                               ||      72469-75115           6|-
---                                               ||      75116-77762           1|-
---                                               ||      77763-80409           0|
---                                               ||      80410-83056           2|-
---                                               ||      83057-85703           1|-
---                                               ||      85704-88350           1|-
---                                               ||      88351-90997           3|-
---                                               ||      90998-93644           0|
---                                               ||      93645-96291           0|
---                                               ||      96292-98938           0|
---                                               ||      98939-101585          0|
---                                               ||     101586-104232          0|
---                                               ||     104233-106879          0|
---                                               ||     106880-109526          0|
---                                               ||     109527-112173          1|-
---                                               ||     112174-114820          0|
---                                               ||     114821-117467          0|
---                                               ||     117468-120114          1|-
---                                               ||     120115-122761          0|
---                                               ||     122762-125408          0|
---                                               ||     125409-128055          0|
---                                               ||     128056-130702          0|
---                                               ||     130703-133349          1|-
---    
-----------------------------------------
--- Starting command on Wed Jul 24 09:47:38 2024 with 92974.968 GB free disk space
+example: canu -d run1 -p godzilla genomeSize=1g -nanopore-raw reads/*.fasta.gz 
 
-    cd correction/0-mercounts
-    ./meryl-configure.sh \
-    > ./meryl-configure.err 2>&1
 
--- Finished on Wed Jul 24 09:47:41 2024 (3 seconds) with 92973.828 GB free disk space
-----------------------------------------
---  segments   memory batches
---  -------- -------- -------
---        01  5.80 GB       3
---        02  5.80 GB       2
---        04  3.24 GB       2
---        06  2.10 GB       2
---        08  1.71 GB       2
---        12  1.29 GB       2
---        16  0.97 GB       2
---        20  0.77 GB       2
---        24  0.65 GB       2
---        32  0.48 GB       2
---        40  0.39 GB       2
---        48  0.32 GB       2
---        56  0.28 GB       2
---
---  For 1568313 reads with 6000000238 bases, limit to 60 batches.
---  Will count kmers using 02 jobs, each using 7 GB and 4 threads.
---
--- Finished stage 'merylConfigure', reset canuIteration.
---
--- Running jobs.  First attempt out of 2.
---
--- 'meryl-count.jobSubmit-01.sh' -> job 5145902 tasks 1-2.
---
-----------------------------------------
--- Starting command on Wed Jul 24 09:47:41 2024 with 92973.828 GB free disk space
+  To restrict canu to only a specific stage, use:
+    -haplotype     - generate haplotype-specific reads
+    -correct       - generate corrected reads
+    -trim          - generate trimmed reads
+    -assemble      - generate an assembly
+    -trim-assemble - generate trimmed reads and then assemble them
 
-    cd /bigdata/stajichlab/shared/projects/BioCrusts/MossCrust/genomics/hybrid_assemblies/asm/canu/PH1
-    sbatch \
-      --depend=afterany:5145902 \
-      --cpus-per-task=1 \
-      --mem-per-cpu=4g \
-      --time 24:00:00  \
-      -D `pwd` \
-      -J 'canu_PH1' \
-      -o canu-scripts/canu.01.out  canu-scripts/canu.01.sh
-Submitted batch job 5145903
+  The assembly is computed in the -d <assembly-directory>, with output files named
+  using the -p <assembly-prefix>.  This directory is created if needed.  It is not
+  possible to run multiple assemblies in the same directory.
 
--- Finished on Wed Jul 24 09:47:41 2024 (lickety-split) with 92973.828 GB free disk space
-----------------------------------------
+  The genome size should be your best guess of the haploid genome size of what is being
+  assembled.  It is used primarily to estimate coverage in reads, NOT as the desired
+  assembly size.  Fractional values are allowed: '4.7m' equals '4700k' equals '4700000'
+
+  Some common options:
+    useGrid=string
+      - Run under grid control (true), locally (false), or set up for grid control
+        but don't submit any jobs (remote)
+    rawErrorRate=fraction-error
+      - The allowed difference in an overlap between two raw uncorrected reads.  For lower
+        quality reads, use a higher number.  The defaults are 0.300 for PacBio reads and
+        0.500 for Nanopore reads.
+    correctedErrorRate=fraction-error
+      - The allowed difference in an overlap between two corrected reads.  Assemblies of
+        low coverage or data with biological differences will benefit from a slight increase
+        in this.  Defaults are 0.045 for PacBio reads and 0.144 for Nanopore reads.
+    gridOptions=string
+      - Pass string to the command used to submit jobs to the grid.  Can be used to set
+        maximum run time limits.  Should NOT be used to set memory limits; Canu will do
+        that for you.
+    minReadLength=number
+      - Ignore reads shorter than 'number' bases long.  Default: 1000.
+    minOverlapLength=number
+      - Ignore read-to-read overlaps shorter than 'number' bases long.  Default: 500.
+  A full list of options can be printed with '-options'.  All options can be supplied in
+  an optional sepc file with the -s option.
+
+  For TrioCanu, haplotypes are specified with the -haplotype{NAME} option, with any
+  number of haplotype-specific Illumina read files after.  The {NAME} of each haplotype
+  is free text (but only letters and numbers, please).  For example:
+    -haplotypeNANNY nanny/*gz
+    -haplotypeBILLY billy1.fasta.gz billy2.fasta.gz
+
+  Reads can be either FASTA or FASTQ format, uncompressed, or compressed with gz, bz2 or xz.
+
+  Reads are specified by the technology they were generated with, and any processing performed.
+
+  [processing]
+    -corrected
+    -trimmed
+
+  [technology]
+    -pacbio      <files>
+    -nanopore    <files>
+    -pacbio-hifi <files>
+
+Complete documentation at http://canu.readthedocs.org/en/latest/
+
+ERROR:  Invalid command line option 'input/nanopore/NA'.  Did you forget quotes around options with spaces?
+

@@ -1,25 +1,2 @@
 x01
-[2024-07-24 09:40:22] INFO: Starting Flye 2.9-b1774
-[2024-07-24 09:40:22] INFO: >>>STAGE: configure
-[2024-07-24 09:40:22] INFO: Configuring run
-[2024-07-24 09:41:32] INFO: Total read length: 4211604986
-[2024-07-24 09:41:32] INFO: Reads N50/N90: 19372 / 5669
-[2024-07-24 09:41:32] INFO: Minimum overlap set to 6000
-[2024-07-24 09:41:32] INFO: >>>STAGE: assembly
-[2024-07-24 09:41:32] INFO: Assembling disjointigs
-[2024-07-24 09:41:32] INFO: Reading sequences
-[2024-07-24 09:42:29] INFO: Building minimizer index
-[2024-07-24 09:42:29] INFO: Pre-calculating index storage
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2024-07-24 09:42:57] INFO: Filling index
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2024-07-24 09:45:26] INFO: Extending reads
-[2024-07-24 10:02:49] INFO: Overlap-based coverage: 549
-[2024-07-24 10:02:49] INFO: Median overlap divergence: 0.0230933
-0% 100% 
-[2024-07-24 11:30:57] INFO: Assembled 0 disjointigs
-[2024-07-24 11:30:58] INFO: Generating sequence
-[2024-07-24 11:30:58] INFO: Filtering contained disjointigs
-[2024-07-24 11:30:58] INFO: Contained seqs: 0
-[2024-07-24 11:30:58] ERROR: No disjointigs were assembled - please check if the read type and genome size parameters are correct
-[2024-07-24 11:30:58] ERROR: Pipeline aborted
+Error: asm/flye/VB21 already exists

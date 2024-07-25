@@ -1,5 +1,5 @@
 #!/usr/bin/bash -l
-#SBATCH -p short --out logs/launch_canu.%a.log -a 1
+#SBATCH -p short --out logs/launch_canu.%a.log -a 1ç
 module load canu
 IN=input/nanopore
 OUT=asm/canu
@@ -9,8 +9,8 @@ if [ -z $N ]; then
     if [ -z $N ]; then
         echo "no value for SLURM ARRAY - specify with -a or cmdline"
         exit
-	echo "no value for SLURM ARRAY - specify with -a or cmdline"
-	exit
+    fi
+fi
 
 mkdir -p $OUT
 IFS=,
