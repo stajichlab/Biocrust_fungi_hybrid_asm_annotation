@@ -1,0 +1,56 @@
+Loading masurca/4.1.0
+  Loading requirement: parallel/20220122 boost/1.80.0 bwa/0.7.17 freebayes/1.3.6
+r27
+/bigdata/stajichlab/shared/projects/BioCrusts/MossCrust/genomics/hybrid_assemblies/asm/masurca/VB21 /bigdata/stajichlab/shared/projects/BioCrusts/MossCrust/genomics/hybrid_assemblies
+Verifying PATHS...
+jellyfish OK
+runCA OK
+createSuperReadsForDirectory.perl OK
+creating script file for the actions...done.
+execute assemble.sh to run assembly
+[Thu Sep 12 15:12:18 PDT 2024] Processing pe library reads
+[Thu Sep 12 15:12:30 PDT 2024] Average PE read length 148
+[Thu Sep 12 15:12:30 PDT 2024] Using kmer size of 49 for the graph
+[Thu Sep 12 15:12:31 PDT 2024] MIN_Q_CHAR: 33
+[Thu Sep 12 15:12:31 PDT 2024] Creating mer database for Quorum
+[Thu Sep 12 15:12:49 PDT 2024] Error correct PE
+[Thu Sep 12 15:14:01 PDT 2024] Estimating genome size
+[Thu Sep 12 15:14:14 PDT 2024] Estimated genome size: 21694268
+[Thu Sep 12 15:14:14 PDT 2024] Creating k-unitigs with k=49
+[Thu Sep 12 15:15:18 PDT 2024] Computing super reads from PE 
+[Thu Sep 12 15:16:26 PDT 2024] Using CABOG from /bigdata/operations/pkgadmin/opt/linux/centos/8.x/x86_64/pkgs/masurca/4.1.0/bin/../CA8/Linux-amd64/bin
+[Thu Sep 12 15:16:26 PDT 2024] Running mega-reads correction/assembly
+[Thu Sep 12 15:16:26 PDT 2024] Using mer size 17 for mapping, B=15, d=0.02
+[Thu Sep 12 15:16:26 PDT 2024] Estimated Genome Size 21694268
+[Thu Sep 12 15:16:26 PDT 2024] Estimated Ploidy 1
+[Thu Sep 12 15:16:26 PDT 2024] Using 32 threads
+[Thu Sep 12 15:16:26 PDT 2024] Output prefix mr.49.17.15.0.02
+[Thu Sep 12 15:16:26 PDT 2024] Creating k-unitigs for k=19
+[Thu Sep 12 15:16:39 PDT 2024] Pre-correcting long reads
+[Thu Sep 12 15:17:03 PDT 2024] Pre-corrected reads are in longest_reads.35x.fa
+[Thu Sep 12 15:17:03 PDT 2024] Computing mega-reads
+[Thu Sep 12 15:17:03 PDT 2024] Running locally in 1 batch
+[Thu Sep 12 15:18:45 PDT 2024] Refining alignments
+[Thu Sep 12 15:18:50 PDT 2024] Computing allowed merges
+[Thu Sep 12 15:18:50 PDT 2024] Joining
+[Thu Sep 12 15:18:50 PDT 2024] Gap consensus
+[Thu Sep 12 15:19:11 PDT 2024] Generating assembly input files
+[Thu Sep 12 15:19:16 PDT 2024] Coverage of the mega-reads less than 5 -- using the super reads as well
+[Thu Sep 12 15:19:16 PDT 2024] Coverage threshold for splitting unitigs is 15 minimum ovl 499
+[Thu Sep 12 15:19:16 PDT 2024] Running assembly
+[Thu Sep 12 15:21:16 PDT 2024] Recomputing A-stat
+[Thu Sep 12 15:21:41 PDT 2024] Mega-reads initial assembly complete
+[Thu Sep 12 15:21:41 PDT 2024] No gap closing possible
+[Thu Sep 12 15:21:41 PDT 2024] Removing redundant scaffolds
+[Thu Sep 12 15:21:48 PDT 2024] Assembly complete, primary scaffold sequences are in CA.mr.49.17.15.0.02/primary.genome.scf.fasta
+[Thu Sep 12 15:21:48 PDT 2024] redundant or haplotype variant scaffold sequences are in CA.mr.49.17.15.0.02/alternative.genome.scf.fasta
+[Thu Sep 12 15:21:48 PDT 2024] All done, final assembly is in CA.mr.49.17.15.0.02/primary.genome.scf.fasta
+[Thu Sep 12 15:21:48 PDT 2024] Final stats for CA.mr.49.17.15.0.02/primary.genome.scf.fasta
+N50 30575
+Sequence 15437791
+Average 22803.2
+E-size 37686.4
+Count 677
+/bigdata/stajichlab/shared/projects/BioCrusts/MossCrust/genomics/hybrid_assemblies
+/var/spool/slurmd/job7346757/slurm_script: line 57: syntax error near unexpected token `done'
+/var/spool/slurmd/job7346757/slurm_script: line 57: `done'

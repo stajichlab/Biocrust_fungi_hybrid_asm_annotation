@@ -1,8 +1,8 @@
 #!/usr/bin/bash -l
-#SBATCH -p short -C xeon -N 1 -c 24 --mem 96gb --out logs/raven.%a.log 
-module load raven
+#SBATCH -p short -C xeon -N 1 -c 24 --mem 96gb --out logs/flye.%a.log -a 1-8
+module load Flye
 IN=input/nanopore
-OUT=asm/raven
+OUT=asm/flye
 hostname
 CPU=$SLURM_CPUS_ON_NODE
 if [ -z $CPU ]; then
@@ -25,10 +25,7 @@ SAMPLES=samples.csv
 
 tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ
 do
-    INFASTQ=$(realpath $IN/$NANOPORE)
-    OUTSCAFFOLDS=$(realpath $OUT)/$BASE.scaffolds.fasta
-    if [[ ! -f $OUTSCAFFOLDS || $INFASTQ -nt $OUTSCAFFOLDS ]]; then
-    	pushd $SCRATCH
-    	raven -t $CPU $INFASTQ > $OUTSCAFFOLDS
+    if [[ ! -f $OUT/$BASE/assembly.fasta || $IN/$NANOPORE -nt $OUT/$BASE/assembly.fasta ]]; then
+    	flye --nano-hq $IN/$NANOPORE --out-dir $OUT/$BASE --threads $CPU --scaffold
     fi
 done
